@@ -30,6 +30,7 @@ const Calculatrice: React.FC = () => {
 
   return (
     <div className="page-container">
+      <h1>Calculatrice Next JS</h1>
       <div className="calculatrice-container">
         <AffichageCalculatrice
           valeurAffichee={valeurAffichee}
