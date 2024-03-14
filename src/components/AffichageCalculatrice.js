@@ -1,7 +1,7 @@
 import React from 'react';
 
 const AffichageCalculatrice = ({ valeurAffichee, mettreAJourValeur, effacerValeur, evaluerExpression }) => {
-  const chiffres = ['7', '8', '9', '4', '5', '6', '1', '2', '3', '0'];
+  const chiffres = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
   const operateurs = ['/', '*', '-', '+'];
 
   const boutonsChiffres = chiffres.map((chiffre) => (

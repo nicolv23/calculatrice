@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import AffichageCalculatrice from '../components/AffichageCalculatrice';
+import '../styles/calculatrice.css';
 
 const Calculatrice: React.FC = () => {
   const [valeurAffichee, setValeurAffichee] = useState<string>('');
@@ -28,7 +29,7 @@ const Calculatrice: React.FC = () => {
   };
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh' }}>
+    <div className="page-container">
       <div className="calculatrice-container">
         <AffichageCalculatrice
           valeurAffichee={valeurAffichee}
