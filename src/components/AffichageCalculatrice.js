@@ -17,15 +17,43 @@ const AffichageCalculatrice = ({ valeurAffichee, mettreAJourValeur, effacerValeu
   ));
 
   const toggleNegatif = () => {
-    // Vérifie si la valeur actuelle est négative
+    // Efface la valeur affichée
+    effacerValeur();
+  
+    // Vérifie si la valeur affichée est vide
+    if (valeurAffichee === '') return;
+    
+    // Vérifie si la valeur affichée est déjà négative
     if (valeurAffichee[0] === '-') {
       // Si oui, retire le signe négatif
       mettreAJourValeur(valeurAffichee.slice(1));
     } else {
-      // Sinon, ajoute un signe négatif
+      // Sinon, ajoute le signe négatif devant la valeur
       mettreAJourValeur('-' + valeurAffichee);
     }
   };
+  
+  
+  
+  
+  const convertirPourcentage = () => {
+    effacerValeur();
+    if (!valeurAffichee || valeurAffichee[0] === '-') return;
+  
+    // Convertit la valeur affichée en nombre
+    let nombre = parseFloat(valeurAffichee);
+  
+    // Si le dernier caractère de la valeur affichée est un chiffre, retire le dernier chiffre
+    const dernierCaractereEstChiffre = /\d/.test(valeurAffichee[valeurAffichee.length - 1]);
+    if (dernierCaractereEstChiffre) {
+      nombre = nombre / 10;
+    }
+  
+    // Convertit en pourcentage
+    const pourcentage = nombre * 0.01;
+    mettreAJourValeur(pourcentage.toString());
+  };
+  
 
   return (
     <div className="calculatrice-container">
@@ -34,7 +62,8 @@ const AffichageCalculatrice = ({ valeurAffichee, mettreAJourValeur, effacerValeu
       <div className="boutons-operateurs">{boutonsOperateurs}</div>
       <button onClick={effacerValeur} className="btn-effacer">Effacer</button>
       <button onClick={evaluerExpression} className="btn-evaluer">=</button>
-      <button onClick={toggleNegatif} className="btn-negatif">+/-</button> {/* Bouton pour convertir en négatif */}
+      <button onClick={toggleNegatif} className="btn-negatif">+/-</button> 
+      <button onClick={convertirPourcentage} className="btn-pourcentage">%</button> 
     </div>
   );
 };
