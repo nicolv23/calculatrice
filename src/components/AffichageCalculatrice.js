@@ -53,10 +53,23 @@ const AffichageCalculatrice = ({ valeurAffichee, mettreAJourValeur, effacerValeu
     const pourcentage = nombre * 0.01;
     mettreAJourValeur(pourcentage.toString());
   };
+
+  const handleKeyPress = (e) => {
+    const { key } = e;
+    if (/[0-9]/.test(key)) {
+      mettreAJourValeur(key);
+    } else if (key === '+' || key === '-' || key === '*' || key === '/') {
+      mettreAJourValeur(key);
+    } else if (key === 'Enter') {
+      evaluerExpression();
+    } else if (key === 'Backspace') {
+      effacerValeur();
+    }
+  };
   
 
   return (
-    <div className="calculatrice-container">
+    <div className="calculatrice-container" onKeyDown={handleKeyPress} tabIndex={0}>
       <input type="text" value={valeurAffichee} readOnly className="input-valeur" />
       <div className="boutons-chiffres">{boutonsChiffres}</div>
       <div className="boutons-operateurs">{boutonsOperateurs}</div>

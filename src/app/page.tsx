@@ -34,18 +34,22 @@ const Calculatrice: React.FC = () => {
   };
 
   return (
-    <div className="page-container">
-      <h1>Calculatrice Next JS</h1>
+  <div className="page-container">
+    <h1>Calculatrice Next JS</h1>
+    <div className="content-wrapper">
       <div className="calculatrice-container">
         <AffichageCalculatrice
-          valeurAffichee={valeurAffichee}
-          mettreAJourValeur={mettreAJourValeur}
-          effacerValeur={effacerValeur}
-          evaluerExpression={evaluerExpression}
+        valeurAffichee={valeurAffichee}
+        mettreAJourValeur={mettreAJourValeur}
+        effacerValeur={effacerValeur}
+        evaluerExpression={evaluerExpression}
         />
+      </div>
+      <div className="historique-container">
         <HistoriqueCalculs historique={historique} />
       </div>
     </div>
+  </div>
   );
 };
 
