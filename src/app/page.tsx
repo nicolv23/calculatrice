@@ -7,7 +7,12 @@ import '../styles/calculatrice.css';
 
 const Calculatrice: React.FC = () => {
   const [valeurAffichee, setValeurAffichee] = useState<string>('');
-  const [historique, setHistorique] = useState<string[]>([]); // Définir le type de l'historique
+  const [historique, setHistorique] = useState<string[]>([]); 
+  const [modeSombre, setModeSombre] = useState<boolean>(false);
+
+  const toggleModeSombre = () => {
+    setModeSombre(!modeSombre);
+  };
 
   // Fonction pour mettre à jour la valeur affichée
   const mettreAJourValeur = (nouvelleValeur: string) => {
@@ -34,24 +39,28 @@ const Calculatrice: React.FC = () => {
   };
 
   return (
-  <div className="page-container">
-    <h1>Calculatrice Next JS</h1>
-    <div className="content-wrapper">
-      <div className="calculatrice-container">
-        <AffichageCalculatrice
-        valeurAffichee={valeurAffichee}
-        mettreAJourValeur={mettreAJourValeur}
-        effacerValeur={effacerValeur}
-        evaluerExpression={evaluerExpression}
-        />
+    <div className={`page-container ${modeSombre ? 'mode-sombre' : ''}`}>
+      <div className="header">
+        <h1>Calculatrice Next JS</h1>
+        <div className="button-container">
+          <button onClick={toggleModeSombre}>Activer le mode sombre</button>
+        </div>
       </div>
-      <div className="historique-container">
-        <HistoriqueCalculs historique={historique} />
+      <div className="content-wrapper">
+        <div className={`calculatrice-container ${modeSombre ? 'mode-sombre' : ''}`}>
+          <AffichageCalculatrice
+            valeurAffichee={valeurAffichee}
+            mettreAJourValeur={mettreAJourValeur}
+            effacerValeur={effacerValeur}
+            evaluerExpression={evaluerExpression}
+          />
+        </div>
+        <div className={`historique-container ${modeSombre ? 'mode-sombre' : ''}`}>
+          <HistoriqueCalculs historique={historique} />
+        </div>
       </div>
     </div>
-  </div>
   );
 };
 
 export default Calculatrice;
-
