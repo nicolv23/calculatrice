@@ -1,5 +1,5 @@
 .page-container {
-  background-color: #4daafc;
+  background-color: #95bbdb;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -37,7 +37,6 @@ button {
   margin-left: auto; 
 }
 
-
 h1 {
   color: #0c0f0d;
   font-size: 36px;
@@ -53,18 +52,17 @@ button:hover {
   display: flex;
   flex-direction: row;
   width: 100%;
-  max-width: 800px; /* Limiter la largeur */
-  margin: 20px; /* Ajouter une marge autour */
+  max-width: 800px; 
+  margin: 20px;
 }
 
 .calculatrice-container {
   background-color: #969494;
   border-radius: 10px;
   border: 1px solid hwb(0 80% 18%);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   padding: 20px;
   margin-right: 10px;
-  flex: 1; /* Ajuster la taille */
+  flex: 1;
 }
 
 .calculatrice-container.mode-sombre {
@@ -74,7 +72,7 @@ button:hover {
 }
 
 .calculatrice-container input[type="text"] {
-  width: 100%;
+  width: calc(100% - 40px);
   margin-bottom: 10px;
   padding: 10px;
   font-size: 20px;
@@ -86,6 +84,19 @@ button:hover {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
+}
+
+.calculatrice-container .boutons-operateurs button:nth-child(4n) {
+  margin-right: 0; /* Pour les opérateurs en fin de ligne, supprimez la marge */
+}
+
+.calculatrice-container .boutons-chiffres button:nth-child(3n) {
+  margin-right: 0; /* Pour les chiffres en fin de ligne, supprimez la marge */
+}
+
+.calculatrice-container .boutons-chiffres button:nth-last-child(-n+2),
+.calculatrice-container .boutons-operateurs button:nth-last-child(-n+2) {
+  margin-bottom: 0; /* Supprimez la marge des deux derniers boutons */
 }
 
 .calculatrice-container button {
@@ -110,11 +121,23 @@ button:hover {
   border-radius: 10px;
   overflow-y: auto;
   padding: 20px;
-  flex: 1; /* Ajuster la taille */
+  flex: 1;
 }
 
 .historique-container.mode-sombre {
   background-color: #333;
   border-color: #333;
   color: #fff; 
+}
+
+.page-container.mode-sombre .calculatrice-container button {
+  background-color: #d3cccc;
+  color: #333;
+  border: 1px solid #d3cccc;
+}
+
+.page-container.mode-sombre .calculatrice-container input[type="text"],
+.page-container.mode-sombre .historique-container{
+  background-color: #333;
+  color: #fff;
 }

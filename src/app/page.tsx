@@ -28,10 +28,10 @@ const Calculatrice: React.FC = () => {
   const evaluerExpression = () => {
     try {
       const resultat = eval(valeurAffichee);
+      const operation = `${valeurAffichee} = ${resultat}`;
+      const nouvelHistorique = [...historique, operation];
       setValeurAffichee(resultat.toString());
-
-      // Ajouter l'expression évaluée à l'historique
-      setHistorique((prevHistorique) => [...prevHistorique, valeurAffichee]);
+      setHistorique(nouvelHistorique);
     } catch (error) {
       console.error('Erreur lors de l\'évaluation de l\'expression :', error);
       setValeurAffichee('Erreur');
@@ -43,7 +43,9 @@ const Calculatrice: React.FC = () => {
       <div className="header">
         <h1>Calculatrice Next JS</h1>
         <div className="button-container">
-          <button onClick={toggleModeSombre}>Activer le mode sombre</button>
+          <button onClick={toggleModeSombre}>
+            {modeSombre ? 'Activer le mode clair' : 'Activer le mode sombre'}
+          </button>
         </div>
       </div>
       <div className="content-wrapper">
