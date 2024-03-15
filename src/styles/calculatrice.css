@@ -82,21 +82,10 @@ button:hover {
 .calculatrice-container .boutons-chiffres,
 .calculatrice-container .boutons-operateurs {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-}
-
-.calculatrice-container .boutons-operateurs button:nth-child(4n) {
-  margin-right: 0; /* Pour les opérateurs en fin de ligne, supprimez la marge */
-}
-
-.calculatrice-container .boutons-chiffres button:nth-child(3n) {
-  margin-right: 0; /* Pour les chiffres en fin de ligne, supprimez la marge */
-}
-
-.calculatrice-container .boutons-chiffres button:nth-last-child(-n+2),
-.calculatrice-container .boutons-operateurs button:nth-last-child(-n+2) {
-  margin-bottom: 0; /* Supprimez la marge des deux derniers boutons */
+  grid-template-columns: repeat(4, 1fr); 
+  gap: 20px; 
+  justify-items: center; 
+  align-items: center; 
 }
 
 .calculatrice-container button {
